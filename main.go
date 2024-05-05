@@ -68,7 +68,7 @@ func insertHandler(w http.ResponseWriter, r *http.Request) {
 		uuid := uuid.NewString()
 		info := "Motion detected!"
 		today := time.Now().Format("2006-01-02 15:04:05")
-		_, err := db.Exec("INSERT INTO motion VALUES(?,?,?)", uuid, info, today)
+		_, err := db.Exec("INSERT INTO motion (uuid, info, time) VALUES(?,?,?)", uuid, info, today)
 		if err != nil {
 			fmt.Println("Error when inserting: ", err.Error())
 			panic(err.Error())
